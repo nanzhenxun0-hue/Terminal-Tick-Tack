@@ -2,28 +2,60 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Terminal Tick-Tack | Definitive Edition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>TERMINAL TICK-TACK | Professional Edition</title>
+    <meta name="description" content="GitHub-driven Cyberpunk Card Battle Engine">
     <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js" defer></script>
 </head>
-<body>
-    <div id="game-container">
-        <div id="pack-open-overlay"></div>
-        <header>
-            <div class="status-bar">
-                <input type="password" id="gh-token" placeholder="GitHub Token...">
-                <button id="connect-btn">CONNECT</button>
-                <span>TIME:<b id="player-time">100</b>s</span>
-                <span>ENEMY:<b id="enemy-time">100</b>s</span>
+<body class="is-pro-ui">
+    <div id="app" class="vignette">
+        <div id="toast-container"></div>
+        
+        <nav class="system-header">
+            <div class="vital-monitor">
+                <div class="vital-unit" data-entity="player">
+                    <label>USR.LOG</label>
+                    <div class="meter"><div id="p-gauge" class="fill"></div></div>
+                </div>
+                <div class="vital-unit" data-entity="enemy">
+                    <label>SYS.DOM</label>
+                    <div class="meter"><div id="e-gauge" class="fill warn"></div></div>
+                </div>
             </div>
-        </header>
-        <main id="battle-field">
-            <div id="enemy-field" class="field"></div>
-            <div class="divider">--- NETWORK_GRID ---</div>
-            <div id="player-field" class="field"></div>
-        </main>
-        <div id="hand-area"></div>
-        <button id="end-turn-btn">EXECUTE_TURN</button>
+            <button id="ctrl-panel-trigger" aria-label="Open System Menu">:: SETTINGS</button>
+        </nav>
+
+        <section id="stage">
+            <div id="enemy-zone" class="zone"></div>
+            <div class="stage-divider">
+                <span class="scrolling-text">SYNCING_BITSTREAM... ENCRYPTED_CONNECTION_STABLE...</span>
+            </div>
+            <div id="player-zone" class="zone"></div>
+        </section>
+
+        <section id="interface">
+            <div id="hand-scroller">
+                <div id="hand-mount"></div>
+            </div>
+            <button id="commit-btn" class="main-action">COMMIT_CHANGES</button>
+        </nav>
+
+        <aside id="overlay" class="hidden">
+            <div class="modal-card">
+                <h3>SYSTEM_CONFIGURATION</h3>
+                <div class="input-group">
+                    <input type="password" id="gh-key" placeholder="GITHUB_PAT_TOKEN">
+                    <button data-action="auth">AUTHORIZE</button>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="peer-id-input" placeholder="REMOTE_PEER_ID">
+                    <button data-action="link">ESTABLISH_P2P</button>
+                </div>
+                <div class="id-info">LOCAL_NODE_ID: <code id="local-id">---</code></div>
+                <button class="close-btn" onclick="document.getElementById('overlay').classList.add('hidden')">CLOSE</button>
+            </div>
+        </aside>
     </div>
     <script type="module" src="game.js"></script>
 </body>
