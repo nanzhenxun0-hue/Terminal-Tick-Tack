@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Terminal Tick-Tack | Definitive Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <div id="pack-open-overlay"></div>
+        <header>
+            <div class="status-bar">
+                <input type="password" id="gh-token" placeholder="GitHub Token...">
+                <button id="connect-btn">CONNECT</button>
+                <span>TIME:<b id="player-time">100</b>s</span>
+                <span>ENEMY:<b id="enemy-time">100</b>s</span>
+            </div>
+        </header>
+        <main id="battle-field">
+            <div id="enemy-field" class="field"></div>
+            <div class="divider">--- NETWORK_GRID ---</div>
+            <div id="player-field" class="field"></div>
+        </main>
+        <div id="hand-area"></div>
+        <button id="end-turn-btn">EXECUTE_TURN</button>
+    </div>
+    <script type="module" src="game.js"></script>
+</body>
+</html>
